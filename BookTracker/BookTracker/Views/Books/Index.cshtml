@@ -1,0 +1,62 @@
+﻿@model IEnumerable<BookTracker.Models.Book>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Your Books</h2>
+
+<p>
+    @Html.ActionLink("Add New Book", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+           Book Title
+        </th>
+        <th>
+            Date Read
+        </th>
+        <th>
+            Review
+        </th>
+        <th>
+           Author
+        </th>
+        <th>
+            Rating
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateRead)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Review)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+       <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
